@@ -11,14 +11,16 @@ class Python(object):
         super(Python, self).__init__()
         self.project_name = name
         self.myname = config('MYNAME', default="DefaultName")
-        self.mypath = config('MYPATH', default="/tmp/")
+        self.mypath = config('MYPATH')
         self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
         self.myemail = config('MYEMAIL', default="default@defaultmail.com")
         self.myurl = config('MYURL', default="www.sampleurl.com")
 
-        if not self.check_if_exist():
-            create_structure = self.make_structure()
-
+        if self.mypath is not '':
+            if not self.check_if_exist():
+                create_structure = self.make_structure()
+        else:
+            print("Define a root path in env file to create a project")
 
     def check_if_exist(self):
         full_path = self.mypath + self.myname
@@ -106,7 +108,7 @@ class Python(object):
 
 
     def generate_license(self):
-        import sample_files.licenses.license as license
+        import sample_files.licenses.license as mylicense
         f = open("LICENSE","w+")
-        f.write(license.mit())
+        f.write(mylicense.mit())
         f.close()

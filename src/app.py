@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 
 # Add long and short argument
-parser.add_argument("--languaje", "-l", help="Set the languaje of the project")
+parser.add_argument("--language", "-l", help="Set the language of the project")
 parser.add_argument("--name", "-n", help="Set the name of the project")
 #parser.add_argument("--path", "-p", help="Set the path of the project")
 
@@ -13,8 +13,8 @@ parser.add_argument("--name", "-n", help="Set the name of the project")
 args = parser.parse_args()
 
 # Check for --width
-if (args.languaje and args.name):
+if (args.language and args.name):
     from languages.python import Python
     Python(args.name)
 else:
-    print("Languaje and project name are compulsary")
+    print("Language and project name are compulsary")

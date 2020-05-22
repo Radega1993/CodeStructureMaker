@@ -41,7 +41,7 @@ Any prerequisites for this project
 <!-- start using -->
 ## Using <span id="project_title">CodeStructureMaker</span>
 
-To start **<span id="project_title">CodeStructureMaker</span>** just open a command license/terminal (`Ctrl+Alt+T`),
+To start **<span id="project_title">CodeStructureMaker</span>** just open a command line/terminal (`Ctrl+Alt+T`),
 
 Right now, python is the only language avaliable but i'm working in other languages.
 
