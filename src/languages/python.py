@@ -1,4 +1,5 @@
-import config.config as cfg
+#import config.config as cfg
+from decouple import config
 import os
 import shutil
 from pathlib import Path
@@ -8,17 +9,22 @@ class Python(object):
 
     def __init__(self, name):
         super(Python, self).__init__()
-        self.name = name
+        self.project_name = name
+        self.myname = config('MYNAME', default="DefaultName")
+        self.mypath = config('MYPATH', default="/tmp/")
+        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
+        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
+        self.myurl = config('MYURL', default="www.sampleurl.com")
 
         if not self.check_if_exist():
             create_structure = self.make_structure()
 
 
     def check_if_exist(self):
-        full_path = cfg.path + self.name
+        full_path = self.mypath + self.myname
         exist = os.path.exists(full_path)
         if exist:
-            print("The directory %s already exist" % self.name)
+            print("The directory %s already exist" % config('MYNAME', default="DefaultName"))
             return exist
         else:
             return exist
@@ -27,28 +33,28 @@ class Python(object):
     def make_structure(self):
         try:
             #define working directory from congif var
-            os.chdir(cfg.path)
+            os.chdir(self.mypath)
             #create root project directory
-            os.mkdir(self.name, cfg.access_rights)
+            os.mkdir(self.project_name, self.access_rights)
         except OSError:
-            print ("Creation of the directory %s failed" % self.name)
+            print ("Creation of the directory %s failed" % self.project_name)
         else:
-            print ("Successfully created the directory %s " % self.name)
+            print ("Successfully created the directory %s " % self.project_name)
 
         # Creating all default structure
         try:
             #working on root directory
-            os.chdir(self.name)
+            os.chdir(self.project_name)
 
-            os.mkdir('docs', cfg.access_rights)
+            os.mkdir('docs', self.access_rights)
             Path('docs/index.md').touch()
             print("Creating documentation folder")
 
-            os.mkdir('test', cfg.access_rights)
+            os.mkdir('test', self.access_rights)
             Path('test/.gitkeep').touch()
             print("Creating test folder")
 
-            os.mkdir('src', cfg.access_rights)
+            os.mkdir('src', self.access_rights)
             Path('src/__init__.py').touch()
             Path('src/app.py').touch()
             print("Creating src folder")
@@ -60,13 +66,16 @@ class Python(object):
             add_setup_content = self.setup_file()
 
             Path('README.md').touch()
+            Path('LICENSE').touch()
+            get_license = self.generate_license()
             print("Creating default files")
+
         except OSError:
-            print ("Creation of the structure for project %s failed" % self.name)
-            os.chdir(cfg.path)
-            shutil.rmtree(self.name)
+            print ("Creation of the structure for project %s failed" % self.project_name)
+            os.chdir(self.mypath)
+            shutil.rmtree(self.project_name)
         else:
-            print ("Successfully created the structure for project %s " % self.name)
+            print ("Successfully created the structure for project %s " % self.project_name)
 
 
     def git_ignore(self):
@@ -85,12 +94,19 @@ class Python(object):
         "setup(name='Distutils',\n" \
         "      version='1.0',\n" \
         "      description='<description>',\n" \
-        "      author=" + "'" + cfg.my_name + "',\n" \
-        "      author_email=" + "'" + cfg.my_email + "',\n" \
-        "      url=" + "'" + cfg.my_url + "',\n" \
+        "      author=" + "'" + self.myname + "',\n" \
+        "      author_email=" + "'" + self.myemail + "',\n" \
+        "      url=" + "'" + self.myurl + "',\n" \
         "      packages=['distutils', 'distutils.command'],\n" \
         "     )"
 
         f = open("setup.py","w+")
         f.write(text)
+        f.close()
+
+
+    def generate_license(self):
+        import sample_files.licenses.license as license
+        f = open("LICENSE","w+")
+        f.write(license.mit())
         f.close()
