@@ -84,7 +84,7 @@ structure generated:
   - docs
     - ***index.md***
   - src
-    - ***__init__.py***
+    - ***\_\_init\_\_.py***
     - ***app.py***
   - test
     - ***.gitkeep***
