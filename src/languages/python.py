@@ -16,7 +16,8 @@ class Python(object):
         self.myemail = config('MYEMAIL', default="default@defaultmail.com")
         self.myurl = config('MYURL', default="www.sampleurl.com")
 
-        if self.mypath is not '':
+        empty = ''
+        if self.mypath is not empty:
             if not self.check_if_exist():
                 create_structure = self.make_structure()
         else:
@@ -28,8 +29,7 @@ class Python(object):
         if exist:
             print("The directory %s already exist" % config('MYNAME', default="DefaultName"))
             return exist
-        else:
-            return exist
+        return exist
 
 
     def make_structure(self):

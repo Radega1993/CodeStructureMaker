@@ -41,6 +41,59 @@ Any prerequisites for this project
 <!-- start using -->
 ## Using <span id="project_title">CodeStructureMaker</span>
 
+### Dev enviroment
+
+- First copy `.env_example` to `.env` to define enviroment variables
+```
+cp .env_example .env
+```
+
+- Modify the file with your data:
+```
+MYPATH=path
+ACCES_RIGHT=0o755
+MYNAME=myname
+MYURL=url
+MYEMAIL=email
+LICENSENAME=namesurname
+```
+
+- Create a virtual enviroment:
+```
+python3 -m venv venv
+```
+
+- Activate virtual enviroment:
+```
+source myenv/bin/activate
+```
+
+- Install required package:
+```
+pip install -Ur requirements.txt
+```
+
+Example of usage:
+```
+python src/app.py -l python -n testproject
+```
+
+structure generated:
+
+- Project_name
+  - docs
+    - ***index.md***
+  - src
+    - ***__init__.py***
+    - ***app.py***
+  - test
+    - ***.gitkeep***
+  - ***LICENSE***
+  - ***README.md***
+  - ***requirements.txt***
+  - ***setup.py***
+  - ***.gitignore***
+
 To start **<span id="project_title">CodeStructureMaker</span>** just open a command line/terminal (`Ctrl+Alt+T`),
 
 Right now, python is the only language avaliable but i'm working in other languages.
@@ -56,7 +109,7 @@ Right now, python is the only language avaliable but i'm working in other langua
 
 ### Valid languages
 
-- Python
+- python
 
 ### Valid licenses
 
