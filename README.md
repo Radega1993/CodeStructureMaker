@@ -78,7 +78,7 @@ Example of usage:
 python src/app.py -l python -n testproject
 ```
 
-structure generated:
+Structure generated:
 
 - Project_name
   - docs
@@ -88,7 +88,6 @@ structure generated:
     - ***app.py***
   - test
     - ***.gitkeep***
-  - ***LICENSE***
   - ***README.md***
   - ***requirements.txt***
   - ***setup.py***
@@ -110,6 +109,7 @@ Right now, python is the only language avaliable but i'm working in other langua
 ### Valid languages
 
 - python
+- webproject (html/css/js)
 
 ### Valid licenses
 
