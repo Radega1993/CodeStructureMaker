@@ -118,6 +118,15 @@ Right now, python is the only language avaliable but i'm working in other langua
 
 <!-- end using -->
 
+
+## Structures generated
+
+### Python
+![python](img/python_structure.png)
+
+### Web Projet
+![webproject](img/webproject_structure.png)
+
 <!-- start contributing -->
 ## Contributing to <span id="project_title">CodeStructureMaker</span>
 
