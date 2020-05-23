@@ -7,10 +7,10 @@ import common.common as common
 class Python(object):
     """docstring for Python."""
 
-    def __init__(self, name, license):
+    def __init__(self, name, mylicense):
         super(Python, self).__init__()
         self.project_name = name
-        self.license = license
+        self.license = mylicense
         self.myname = config('MYNAME', default="DefaultName")
         self.mypath = config('MYPATH')
         self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)

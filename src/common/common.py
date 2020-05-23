@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-def generate_license(license):
+def generate_license(mylicense):
     import sample_files.licenses.license as mylicense
     print(license)
     f = open("LICENSE","w+")
