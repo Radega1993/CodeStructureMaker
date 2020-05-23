@@ -105,7 +105,7 @@ Right now, python is the only language avaliable but i'm working in other langua
 | --help | -h | Show options table and exit |
 | --language | -l | Set the language of the project |
 | --name | -n | Set the name of the project |
-
+| --license | -li | [optional] Set the license of the project |
 
 ### Valid languages
 
@@ -113,6 +113,7 @@ Right now, python is the only language avaliable but i'm working in other langua
 
 ### Valid licenses
 
+- None
 - MIT
 
 <!-- end using -->

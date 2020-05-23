@@ -4,11 +4,11 @@ import shutil
 from pathlib import Path
 import common.common as common
 
-class Python(object):
-    """docstring for Python."""
+class WebProject(object):
+    """docstring for WebProject."""
 
-    def __init__(self, name, license):
-        super(Python, self).__init__()
+    def __init__(self):
+        super(WebProject, self).__init__()
         self.project_name = name
         self.license = license
         self.myname = config('MYNAME', default="DefaultName")
@@ -19,12 +19,10 @@ class Python(object):
 
         empty = ''
         if self.mypath is not empty:
-            if not common.check_if_exist(self.mypath, self.myname):
+            if not common.check_if_exist():
                 create_structure = self.make_structure()
         else:
             print("Define a root path in env file to create a project")
-
-
 
 
     def make_structure(self):
@@ -81,24 +79,4 @@ class Python(object):
         import sample_files.gitignore.python as text
         f = open(".gitignore","w+")
         f.write(text.python_gitignore)
-        f.close()
-
-
-    def setup_file(self):
-        text = "" \
-        "#!/usr/bin/env python\n" \
-        "\n" \
-        "from distutils.core import setup\n" \
-        "\n" \
-        "setup(name='Distutils',\n" \
-        "      version='1.0',\n" \
-        "      description='<description>',\n" \
-        "      author=" + "'" + self.myname + "',\n" \
-        "      author_email=" + "'" + self.myemail + "',\n" \
-        "      url=" + "'" + self.myurl + "',\n" \
-        "      packages=['distutils', 'distutils.command'],\n" \
-        "     )"
-
-        f = open("setup.py","w+")
-        f.write(text)
         f.close()
