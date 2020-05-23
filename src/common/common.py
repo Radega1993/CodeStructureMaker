@@ -2,12 +2,10 @@ import os
 from pathlib import Path
 
 def generate_license(mylicense):
-    import sample_files.licenses.license as mylicense
-    print(license)
+    import sample_files.license as get_license
     f = open("LICENSE","w+")
-    if license == "mit":
-        print("in: "+ license)
-        f.write(mylicense.mit())
+    if mylicense == "mit":
+        f.write(get_license.mit())
         f.close()
 
 
