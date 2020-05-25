@@ -93,8 +93,8 @@ class Nodejs(object):
         "      \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n" \
         "  },\n" \
         "  \"author\": \"" + self.myname + "\",\n" \
-        "  \"license\": \"ISC\"\n"
-        "  }"
+        "  \"license\": \"ISC\"\n" \
+        "}\n"
 
         f = open("package.json","w+")
         f.write(text)
