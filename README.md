@@ -110,6 +110,8 @@ Right now, python is the only language avaliable but i'm working in other langua
 
 - python
 - webproject (html/css/js)
+- c
+- cpp
 
 ### Valid licenses
 
