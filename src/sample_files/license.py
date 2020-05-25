@@ -1,10 +1,12 @@
 from decouple import config
+import datetime
+year = datetime.datetime.today().year
 
 def mit():
     text1 = """
     MIT License
 
-    Copyright (c) 2020 """+ config('LICENSENAME', default="defaultname")
+    Copyright (c) """+ str(year) + " " + config('LICENSENAME', default="defaultname")
 
     text2 = """
     Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -4,7 +4,7 @@ import argparse
 # Initiate the parser
 parser = argparse.ArgumentParser(description="Create default code project structure automaticaly")
 valid_licenses = [None, "mit"]
-valid_languages = ["python", "webproject", "cpp", "c"]
+valid_languages = ["python", "webproject", "cpp", "c", "nodejs"]
 
 
 # Add long and short argument
@@ -30,5 +30,8 @@ if (args.language and args.name):
     if args.language == "c":
         from languages.c import C
         C(args.name, args.license)
+    if args.language == "nodejs":
+        from languages.nodejs import Nodejs
+        Nodejs(args.name, args.license)
 else:
     print("Language and project name are compulsary")

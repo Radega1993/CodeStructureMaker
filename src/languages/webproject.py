@@ -49,6 +49,10 @@ class WebProject(object):
             f.close()
             print("Creating css folder")
 
+            os.mkdir('docs', self.access_rights)
+            Path('docs/index.md').touch()
+            print("Creating documentation folder")
+
             os.mkdir('js', self.access_rights)
             Path('js/main.js').touch()
             print("Creating js folder")

@@ -4,11 +4,11 @@ import shutil
 from pathlib import Path
 import common.common as common
 
-class C(object):
-    """docstring for C."""
+class Nodejs(object):
+    """docstring for Nodejs."""
 
     def __init__(self, name, mylicense):
-        super(C, self).__init__()
+        super(Nodejs, self).__init__()
         self.project_name = name
         self.license = mylicense
         self.myname = config('MYNAME', default="DefaultName")
@@ -46,22 +46,17 @@ class C(object):
             os.mkdir('docs', self.access_rights)
             Path('docs/index.md').touch()
             print("Creating documentation folder")
-            
-            os.mkdir('core', self.access_rights)
-            os.mkdir('core/src', self.access_rights)
-            Path('core/src/main.c').touch()
-            os.mkdir('core/include', self.access_rights)
-            Path('core/include/main.h').touch()
-            print("Creating src folder")
-
-            os.mkdir('libs', self.access_rights)
-            Path('libs/.gitkeep').touch()
-            print("Creating libs folder")
 
             os.mkdir('test', self.access_rights)
             Path('test/.gitkeep').touch()
             print("Creating test folder")
 
+            os.mkdir('src', self.access_rights)
+            Path('src/app.js').touch()
+            print("Creating src folder")
+
+            Path('package.json').touch()
+            add_package_json_content = self.package_json_file()
             Path('.gitignore').touch()
             add_gitignore = self.git_ignore()
 
@@ -81,7 +76,26 @@ class C(object):
 
 
     def git_ignore(self):
-        import sample_files.gitignore.c as text
+        import sample_files.gitignore.node as text
         f = open(".gitignore","w+")
-        f.write(text.c_gitignore)
+        f.write(text.node_gitignore)
+        f.close()
+
+
+    def package_json_file(self):
+        text = "" \
+        "{\n" \
+        "  \"name\": \"" +self.project_name +"\",\n" \
+        "  \"version\": \"1.0.0\",\n" \
+        "  \"description\": \"\",\n" \
+        "  \"main\": \"src/app.js\",\n" \
+        "  \"scripts\": {\n" \
+        "      \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n" \
+        "  },\n" \
+        "  \"author\": \"" + self.myname + "\",\n" \
+        "  \"license\": \"ISC\"\n"
+        "  }"
+
+        f = open("package.json","w+")
+        f.write(text)
         f.close()

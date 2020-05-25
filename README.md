@@ -112,6 +112,7 @@ Right now, python is the only language avaliable but i'm working in other langua
 - webproject (html/css/js)
 - c
 - cpp
+- nodejs
 
 ### Valid licenses
 

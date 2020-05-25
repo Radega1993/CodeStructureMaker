@@ -43,6 +43,10 @@ class CPP(object):
             #working on root directory
             os.chdir(self.project_name)
 
+            os.mkdir('docs', self.access_rights)
+            Path('docs/index.md').touch()
+            print("Creating documentation folder")
+
             os.mkdir('include', self.access_rights)
             os.mkdir('include/'+self.project_name, self.access_rights)
             Path('include/'+self.project_name+'/public_header.h').touch()
