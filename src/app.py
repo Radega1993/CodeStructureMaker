@@ -1,5 +1,6 @@
 # Include standard modules
 import argparse
+import sys
 
 # Initiate the parser
 parser = argparse.ArgumentParser(description="Create default code project structure automaticaly")
@@ -16,7 +17,28 @@ parser.add_argument("--license", "-li", default=None, choices=valid_licenses, he
 # Read arguments from the command line
 args = parser.parse_args()
 
-# Check for --width
+if len(sys.argv) == 1:
+    from pyfiglet import Figlet
+    f = Figlet(font='slant')
+    print(f.renderText('CSM'))
+    print("Language list")
+    for language in valid_languages:
+        print("- "+ language)
+    while True:
+        args.language = input("Please chose language: ")
+        if args.language not in valid_languages:
+            print("Not supported language")
+        else:
+            break
+    args.name = input("Please chose projectName: ")
+
+
+    args.license = input("Please chose license: (defaul: None) ")
+    if args.license not in valid_licenses:
+        print("Not supported license, we use default")
+        args.license = None
+
+# Check args
 if (args.language and args.name):
     if args.language == "python":
         from languages.python import Python
