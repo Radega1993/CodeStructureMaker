@@ -1,0 +1,14 @@
+Source: codestructuremaker
+Section: x11
+Priority: optional
+Maintainer: Raül de Arriba Garcia <rauldearriba@gmail.com>
+Build-Depends: debhelper (>= 9), python3
+Standards-Version: 3.9.8
+Homepage: https://www.radega.es/
+
+Package: codestructuremaker
+Architecture: all
+Depends: ${misc:Depends},
+Description: Application to create code projects
+ CodeStructureMaker is a command line application to create
+ folders structure and no waste time to start coding.
