@@ -51,9 +51,10 @@ class Python(object):
             Path('test/.gitkeep').touch()
             print("Creating test folder")
 
-            os.mkdir('src', self.access_rights)
-            Path('src/__init__.py').touch()
-            Path('src/app.py').touch()
+            projectfolder = self.project_name.lower()
+            os.mkdir(projectfolder, self.access_rights)
+            Path(projectfolder+'/__init__.py').touch()
+            Path(projectfolder+'/app.py').touch()
             print("Creating src folder")
 
             Path('requirements.txt').touch()
