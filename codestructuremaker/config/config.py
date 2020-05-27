@@ -1,0 +1,6 @@
+MYPATH = "/path"
+ACCES_RIGHT = "0o755"
+MYNAME = "myname"
+MYURL = "url"
+MYEMAIL = "email"
+LICENSENAME = "namesurname"

@@ -1,4 +1,5 @@
 from decouple import config
+import config.config as cfg
 import os
 import shutil
 from pathlib import Path
@@ -11,11 +12,11 @@ class C(object):
         super(C, self).__init__()
         self.project_name = name
         self.license = mylicense
-        self.myname = config('MYNAME', default="DefaultName")
-        self.mypath = config('MYPATH')
-        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
-        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
-        self.myurl = config('MYURL', default="www.sampleurl.com")
+        self.myname = cfg.MYNAME
+        self.mypath = cfg.MYPATH
+        self.access_rights = int(cfg.ACCES_RIGHT,8)
+        self.myemail = cfg.MYEMAIL
+        self.myurl = cfg.MYURL
 
         empty = ''
         if self.mypath is not empty:
@@ -46,7 +47,7 @@ class C(object):
             os.mkdir('docs', self.access_rights)
             Path('docs/index.md').touch()
             print("Creating documentation folder")
-            
+
             os.mkdir('core', self.access_rights)
             os.mkdir('core/src', self.access_rights)
             Path('core/src/main.c').touch()

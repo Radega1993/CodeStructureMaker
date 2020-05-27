@@ -1,0 +1,156 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ codestructuremaker (1.0-1) unstable; urgency=medium
+ .
+   * First version (Closes: #0)
+Author: raul <rauldearriba@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2020-05-27
+
+--- codestructuremaker-1.0.orig/app.py
++++ codestructuremaker-1.0/app.py
+@@ -43,6 +43,9 @@ def codestructuremaker_main():
+         if args.license not in valid_licenses:
+             print("Not supported license, we use default")
+             args.license = None
++        if args.license == "":
++            print("Not supported license, we use default")
++            args.license = None
+ 
+     # Check args
+     if (args.language and args.name):
+--- /dev/null
++++ codestructuremaker-1.0/config/config.py
+@@ -0,0 +1,6 @@
++MYPATH = "/path"
++ACCES_RIGHT = "0o755"
++MYNAME = "myname"
++MYURL = "url"
++MYEMAIL = "email"
++LICENSENAME = "namesurname"
+--- codestructuremaker-1.0.orig/languages/c.py
++++ codestructuremaker-1.0/languages/c.py
+@@ -1,4 +1,5 @@
+ from decouple import config
++import config.config as cfg
+ import os
+ import shutil
+ from pathlib import Path
+@@ -11,11 +12,11 @@ class C(object):
+         super(C, self).__init__()
+         self.project_name = name
+         self.license = mylicense
+-        self.myname = config('MYNAME', default="DefaultName")
+-        self.mypath = config('MYPATH')
+-        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
+-        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
+-        self.myurl = config('MYURL', default="www.sampleurl.com")
++        self.myname = cfg.MYNAME
++        self.mypath = cfg.MYPATH
++        self.access_rights = int(cfg.ACCES_RIGHT,8)
++        self.myemail = cfg.MYEMAIL
++        self.myurl = cfg.MYURL
+ 
+         empty = ''
+         if self.mypath is not empty:
+@@ -46,7 +47,7 @@ class C(object):
+             os.mkdir('docs', self.access_rights)
+             Path('docs/index.md').touch()
+             print("Creating documentation folder")
+-            
++
+             os.mkdir('core', self.access_rights)
+             os.mkdir('core/src', self.access_rights)
+             Path('core/src/main.c').touch()
+--- codestructuremaker-1.0.orig/languages/cpp.py
++++ codestructuremaker-1.0/languages/cpp.py
+@@ -11,11 +11,11 @@ class CPP(object):
+         super(CPP, self).__init__()
+         self.project_name = name
+         self.license = mylicense
+-        self.myname = config('MYNAME', default="DefaultName")
+-        self.mypath = config('MYPATH')
+-        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
+-        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
+-        self.myurl = config('MYURL', default="www.sampleurl.com")
++        self.myname = cfg.MYNAME
++        self.mypath = cfg.MYPATH
++        self.access_rights = int(cfg.ACCES_RIGHT,8)
++        self.myemail = cfg.MYEMAIL
++        self.myurl = cfg.MYURL
+ 
+         empty = ''
+         if self.mypath is not empty:
+--- codestructuremaker-1.0.orig/languages/nodejs.py
++++ codestructuremaker-1.0/languages/nodejs.py
+@@ -11,11 +11,11 @@ class Nodejs(object):
+         super(Nodejs, self).__init__()
+         self.project_name = name
+         self.license = mylicense
+-        self.myname = config('MYNAME', default="DefaultName")
+-        self.mypath = config('MYPATH')
+-        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
+-        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
+-        self.myurl = config('MYURL', default="www.sampleurl.com")
++        self.myname = cfg.MYNAME
++        self.mypath = cfg.MYPATH
++        self.access_rights = int(cfg.ACCES_RIGHT,8)
++        self.myemail = cfg.MYEMAIL
++        self.myurl = cfg.MYURL
+ 
+         empty = ''
+         if self.mypath is not empty:
+--- codestructuremaker-1.0.orig/languages/python.py
++++ codestructuremaker-1.0/languages/python.py
+@@ -11,11 +11,11 @@ class Python(object):
+         super(Python, self).__init__()
+         self.project_name = name
+         self.license = mylicense
+-        self.myname = config('MYNAME', default="DefaultName")
+-        self.mypath = config('MYPATH')
+-        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
+-        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
+-        self.myurl = config('MYURL', default="www.sampleurl.com")
++        self.myname = cfg.MYNAME
++        self.mypath = cfg.MYPATH
++        self.access_rights = int(cfg.ACCES_RIGHT,8)
++        self.myemail = cfg.MYEMAIL
++        self.myurl = cfg.MYURL
+ 
+         empty = ''
+         if self.mypath is not empty:
+--- codestructuremaker-1.0.orig/languages/webproject.py
++++ codestructuremaker-1.0/languages/webproject.py
+@@ -11,11 +11,11 @@ class WebProject(object):
+         super(WebProject, self).__init__()
+         self.project_name = name
+         self.license = mylicense
+-        self.myname = config('MYNAME', default="DefaultName")
+-        self.mypath = config('MYPATH')
+-        self.access_rights = int(config('ACCES_RIGHT', default=0o755),8)
+-        self.myemail = config('MYEMAIL', default="default@defaultmail.com")
+-        self.myurl = config('MYURL', default="www.sampleurl.com")
++        self.myname = cfg.MYNAME
++        self.mypath = cfg.MYPATH
++        self.access_rights = int(cfg.ACCES_RIGHT,8)
++        self.myemail = cfg.MYEMAIL
++        self.myurl = cfg.MYURL
+ 
+         empty = ''
+         if self.mypath is not empty:

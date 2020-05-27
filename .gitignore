@@ -128,8 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#config
-config.py
-
 # snap file to repository
 snap/

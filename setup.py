@@ -14,8 +14,8 @@ setup(
     description='Software to generade structures',
     license="MIT",
     long_description=long_description,
-    long_description_content_type="text/markdown",
-    author='Raül de Arriba',
+    long_description_content_type='text/markdown',
+    author='Raul de Arriba',
     author_email='rauldearriba@gmail.com',
     url='https://github.com/Radega1993/CodeStructureMaker',
     packages=find_packages(),
@@ -29,6 +29,7 @@ setup(
         'codestructuremaker': [
             'common/*.py',
             'languages/*.py',
+            'config/*.py',
             'sample_files/*.py',
             'sample_files/gitignore/*.py'
         ]

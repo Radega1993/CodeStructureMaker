@@ -75,7 +75,7 @@ pip install -Ur requirements.txt
 
 Example of usage:
 ```
-python src/app.py -l python -n testproject
+python csm.py -l python -n testproject
 ```
 
 Structure generated:
@@ -119,6 +119,35 @@ Right now, python is the only language avaliable but i'm working in other langua
 - None
 - MIT
 
+### Filling form
+
+If you no want to use arguments you can fill the form. just run the software.
+```
+python csm.py
+```
+And fill the next form
+```
+   ______ ____ __   __
+  / ____/ ___//  |/  /
+ / /    \__ \/ /|_/ /
+/ /___ ___/ / /  / /  
+\____//____/_/  /_/   
+
+
+Language list
+- python
+- webproject
+- cpp
+- c
+- nodejs
+Please chose language: pyton
+Not supported language
+Please chose language: python
+Please chose projectName: documentationExample
+Please chose license: (defaul: None)
+
+
+```
 <!-- end using -->
 
 
@@ -129,6 +158,15 @@ Right now, python is the only language avaliable but i'm working in other langua
 
 ### Web Projet
 ![webproject](img/webproject_structure.png)
+
+### C
+![c](img/c_structure.png)
+
+### CPP
+![cpp](img/cpp_structure.png)
+
+### NodeJS
+![nodejs](img/node_structure.png)
 
 <!-- start contributing -->
 ## Contributing to <span id="project_title">CodeStructureMaker</span>

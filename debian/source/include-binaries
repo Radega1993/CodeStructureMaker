@@ -1,0 +1,9 @@
+common/__pycache__/__init__.cpython-37.pyc
+common/__pycache__/common.cpython-37.pyc
+config/__pycache__/config.cpython-37.pyc
+languages/__pycache__/__init__.cpython-37.pyc
+languages/__pycache__/c.cpython-37.pyc
+sample_files/__pycache__/__init__.cpython-37.pyc
+sample_files/gitignore/__pycache__/__init__.cpython-37.pyc
+sample_files/gitignore/__pycache__/c.cpython-37.pyc
+logo.png

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Include standard modules
 import argparse
 import sys
@@ -41,6 +43,9 @@ def codestructuremaker_main():
 
         args.license = input("Please chose license: (defaul: None) ")
         if args.license not in valid_licenses:
+            print("Not supported license, we use default")
+            args.license = None
+        if args.license == "":
             print("Not supported license, we use default")
             args.license = None
 

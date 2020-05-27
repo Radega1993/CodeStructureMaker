@@ -1,0 +1,84 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ codestructuremaker (1.0-1) unstable; urgency=medium
+ .
+   * First version (Closes: #0)
+Author: raul <rauldearriba@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2020-05-27
+
+--- codestructuremaker-1.0.orig/csm.desktop
++++ codestructuremaker-1.0/csm.desktop
+@@ -2,8 +2,8 @@
+ Version=1.0
+ Type=Application
+ Terminal=true
+-Exec=/usr/share/applications/csm.py
+-TryExec=/usr/share/applications/csm.py
++Exec=/usr/share/codestructuremaker/csm.py
++TryExec=/usr/share/codestructuremaker/csm.py
+ Name=codestructuremaker
+ Comment=Is a command line application to create folders structure
+ Icon=/usr/share/codestructuremaker/logo.png
+\ No newline at end of file
+--- /dev/null
++++ codestructuremaker-1.0/setup.py
+@@ -0,0 +1,42 @@
++#!/usr/bin/env python
++
++from setuptools import setup, find_packages
++
++with open("README.md", "r") as fh:
++    long_description = fh.read()
++
++with open('requirements.txt') as fp:
++    install_requires = fp.read()
++
++setup(
++    name='codestructuremaker',
++    version='1.0',
++    description='Software to generade structures',
++    license="MIT",
++    long_description=long_description,
++    long_description_content_type="text/markdown",
++    author='Raül de Arriba',
++    author_email='rauldearriba@gmail.com',
++    url='https://github.com/Radega1993/CodeStructureMaker',
++    packages=find_packages(),
++    python_requires='>=3.7',
++    entry_points={
++        'console_scripts': [
++            'codestructuremaker = codestructuremaker.app:codestructuremaker_main',
++        ],
++    },
++    package_data={
++        'codestructuremaker': [
++            'common/*.py',
++            'languages/*.py',
++            'sample_files/*.py',
++            'sample_files/gitignore/*.py'
++        ]
++    },
++    install_requires=install_requires,
++    classifiers=[
++        "Programming Language :: Python :: 3",
++        "License :: OSI Approved :: MIT License",
++        "Operating System :: OS Independent",
++    ],
++)

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=/usr/share/codestructuremaker/csm.py
+TryExec=/usr/share/codestructuremaker/csm.py
+Path=/usr/share/codestructuremaker/
+Name=codestructuremaker
+Comment=Is a command line application to create folders structure
+Icon=/usr/share/codestructuremaker/logo.png
+Categories=Utility;Application;
