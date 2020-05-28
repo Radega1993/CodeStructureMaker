@@ -18,13 +18,14 @@ setup(
     author='Raul de Arriba',
     author_email='rauldearriba@gmail.com',
     url='https://github.com/Radega1993/CodeStructureMaker',
+    packages=find_packages(exclude=["docs","img", ".gitignore", "README.md"]),
     python_requires='>=3.7',
     entry_points={
         'console_scripts': [
             'codestructuremaker = codestructuremaker.csm:codestructuremaker_main',
         ],
     },
-    packages={
+    package_data={
         'codestructuremaker': [
             'common/*.py',
             'languages/*.py',
